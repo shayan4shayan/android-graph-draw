@@ -3,7 +3,7 @@ a simple library to draw graph in android
 
 ## Usage
 
-Simply add graphDraw to your layout file
+Simply add graphDraw to your layout file changed
 ```
 <ir.shahinsoft.graphdraw.GraphView
         android:id="@+id/graphView"
