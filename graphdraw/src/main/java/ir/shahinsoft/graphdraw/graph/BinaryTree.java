@@ -1,4 +1,4 @@
-package ir.shahinsoft.graphdraw.model;
+package ir.shahinsoft.graphdraw.graph;
 
 import android.util.Log;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import java.util.ArrayList;
+
+import ir.shahinsoft.graphdraw.model.Graph;
+import ir.shahinsoft.graphdraw.model.Node;
 
 public class BinaryTree extends Graph {
 
@@ -41,6 +44,11 @@ public class BinaryTree extends Graph {
         });
     }
 
+    @Override
+    public void setDragable(boolean dragable) {
+
+    }
+
     private void buildTree() {
         ArrayList<Node> nodes = getNodes();
         float height = getLevel(nodes.size() - 1) * levelPadding;
@@ -55,7 +63,7 @@ public class BinaryTree extends Graph {
 
             int nodesInRow = (int) Math.pow(2, level);
             /*           position in list    the number of nodes in tree before our level   */
-            int positionInRow = i - ((int) Math.pow(2, level) - 1);
+            int positionInRow = i - (nodesInRow - 1);
 
             Log.d("BinaryTree", "nodesInRow: " + nodesInRow + ", positionInRow: " + positionInRow);
 

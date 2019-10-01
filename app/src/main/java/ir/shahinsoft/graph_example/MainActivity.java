@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import ir.shahinsoft.graphdraw.GraphView;
 import ir.shahinsoft.graphdraw.OnNodeClickListener;
-import ir.shahinsoft.graphdraw.model.BinaryTree;
+import ir.shahinsoft.graphdraw.graph.BinaryTree;
 import ir.shahinsoft.graphdraw.model.Node;
 
 public class MainActivity extends Activity {

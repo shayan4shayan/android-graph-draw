@@ -9,6 +9,8 @@ public class Graph {
 
     private boolean autoId = false;
 
+    private boolean dragable = false;
+
     private ArrayList<Node> nodes;
     private ArrayList<Edge> edges;
 
@@ -75,6 +77,14 @@ public class Graph {
         this.view = view;
     }
 
+    public void setDragable(boolean dragable) {
+        this.dragable = dragable;
+    }
+
+    public boolean isDragable() {
+        return dragable;
+    }
+
     public View getView() {
         return view;
     }
@@ -136,6 +146,7 @@ public class Graph {
         Node[] nodes;
         ArrayList<Edge> edges;
         private boolean isDirected;
+        private boolean dragable = false;
 
         public Builder(int nodeCount) {
             nodes = new Node[nodeCount];
@@ -171,6 +182,10 @@ public class Graph {
             nodes[nodeId].setLabel(label);
             return this;
         }
+        public Builder setDragable(boolean dragable){
+            this.dragable = dragable;
+            return this;
+        }
 
 
         public Graph build() {
@@ -182,6 +197,7 @@ public class Graph {
                     edge.setDirected(true);
                 }
             }
+            graph.setDragable(dragable);
             return graph;
         }
 
