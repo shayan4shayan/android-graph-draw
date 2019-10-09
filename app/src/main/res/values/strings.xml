@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">graph_example</string>
+    <string-array name="supported_graphs" >
+        <item>Binary tree</item>
+        <item>Cube</item>
+    </string-array>
 </resources>

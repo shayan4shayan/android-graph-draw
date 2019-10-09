@@ -4,7 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+
+    <Spinner
+        android:id="@+id/graphs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/supported_graphs"
+        android:padding="8dp" />
+
+    <Spinner
+        android:id="@+id/levels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/cube_levels"
+        android:padding="8dp" />
+
+    <Spinner
+        android:id="@+id/tree_levels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/tree_nodes_count"
+        android:padding="8dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="displayGraph"
+        android:text="display" />
+
+
 
     <ir.shahinsoft.graphdraw.GraphView
         android:id="@+id/graphView"

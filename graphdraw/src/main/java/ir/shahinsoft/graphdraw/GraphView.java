@@ -136,6 +136,7 @@ public class GraphView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if (graph==null || graph.isEmpty()) return;
 
         drawEdges(canvas);
 
@@ -221,5 +222,6 @@ public class GraphView extends View {
     public void setGraph(Graph graph) {
         this.graph = graph;
         graph.setView(this);
+        invalidate();
     }
 }

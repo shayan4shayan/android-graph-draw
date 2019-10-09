@@ -142,6 +142,10 @@ public class Graph {
         }
     }
 
+    public boolean isEmpty() {
+        return nodes.isEmpty();
+    }
+
     public static class Builder {
         Node[] nodes;
         ArrayList<Edge> edges;
@@ -182,7 +186,8 @@ public class Graph {
             nodes[nodeId].setLabel(label);
             return this;
         }
-        public Builder setDragable(boolean dragable){
+
+        public Builder setDragable(boolean dragable) {
             this.dragable = dragable;
             return this;
         }
