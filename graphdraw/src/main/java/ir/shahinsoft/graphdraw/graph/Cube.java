@@ -1,5 +1,6 @@
 package ir.shahinsoft.graphdraw.graph;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -105,7 +106,7 @@ public class Cube extends Graph {
             initGraph(startIndex + size / 2, size / 2, level - 1);
             //connecting left side to right side
             for (int i = startIndex; i < startIndex + (size / 2); i++) {
-                addEdge(Edge.createEdge(i, i + size / 2));
+                addEdge(Edge.createEdgeWithColor(i, i + size / 2,getColorForLevel(level)));
             }
         } else {
 
@@ -114,11 +115,25 @@ public class Cube extends Graph {
             Node node1 = new Node(startIndex);
             Node node2 = new Node(startIndex + 1);
             Edge edge = new Edge(startIndex, startIndex + 1);
+            edge.setColor(getColorForLevel(level));
 
             addNode(node1);
             addNode(node2);
 
             addEdge(edge);
+        }
+    }
+
+    private int getColorForLevel(int level) {
+        switch (level) {
+            case 1:
+                return Color.RED;
+            case 2:
+                return Color.BLUE;
+            case 3:
+                return Color.GREEN;
+            default:
+                return Color.BLACK;
         }
     }
 }

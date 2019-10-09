@@ -136,7 +136,7 @@ public class GraphView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (graph==null || graph.isEmpty()) return;
+        if (graph == null || graph.isEmpty()) return;
 
         drawEdges(canvas);
 
@@ -167,6 +167,7 @@ public class GraphView extends View {
     }
 
     private void drawEdge(Canvas canvas, Edge edge) {
+        paint.setColor(edge.getColor());
         Node startNode = graph.findNode(edge.getStartNodeId());
         Node endNode = graph.findNode(edge.getEndNodeId());
         if (startNode == null || endNode == null) return;
