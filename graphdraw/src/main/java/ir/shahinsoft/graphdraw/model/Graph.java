@@ -55,10 +55,22 @@ public class Graph {
     }
 
     public void addEdge(Edge edge) {
+        updateDegree(edge,true);
         edges.add(edge);
     }
 
+    private void updateDegree(Edge edge, boolean insert) {
+        if (insert){
+            findNode(edge.getStartNodeId()).increaseDegree();
+            findNode(edge.getEndNodeId()).increaseDegree();
+        } else {
+            findNode(edge.getStartNodeId()).decreaseDegree();
+            findNode(edge.getStartNodeId()).decreaseDegree();
+        }
+    }
+
     public void removeEdge(Edge edge) {
+        updateDegree(edge,false);
         edges.remove(edge);
     }
 

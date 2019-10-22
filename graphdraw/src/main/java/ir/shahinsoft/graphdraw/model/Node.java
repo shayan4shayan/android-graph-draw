@@ -33,6 +33,7 @@ public class Node {
     private int color;
     private int id;
     private String label;
+    private int degree = 0;
 
     private boolean hasFocus = false;
 
@@ -103,6 +104,18 @@ public class Node {
 
     public void removeFocus() {
         this.hasFocus = false;
+    }
+
+    public void decreaseDegree() {
+        if (degree>0) degree--;
+    }
+
+    public void increaseDegree(){
+        degree++;
+    }
+
+    public int getDegree() {
+        return degree;
     }
 
     public static class Builder {

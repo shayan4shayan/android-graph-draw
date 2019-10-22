@@ -12,6 +12,7 @@ import ir.shahinsoft.graphdraw.GraphView;
 import ir.shahinsoft.graphdraw.OnNodeClickListener;
 import ir.shahinsoft.graphdraw.graph.BinaryTree;
 import ir.shahinsoft.graphdraw.graph.Cube;
+import ir.shahinsoft.graphdraw.graph.KReqular;
 import ir.shahinsoft.graphdraw.model.Node;
 
 public class MainActivity extends Activity {
@@ -28,35 +29,37 @@ public class MainActivity extends Activity {
 
         graphView = findViewById(R.id.graphView);
 
-        graphSpinner = findViewById(R.id.graphs);
-        cubeLevelsSpinner = findViewById(R.id.levels);
-        cubeLevelsSpinner.setVisibility(View.GONE);
-        treeLevelsSpinner = findViewById(R.id.tree_levels);
+//        graphSpinner = findViewById(R.id.graphs);
+//        cubeLevelsSpinner = findViewById(R.id.levels);
+//        cubeLevelsSpinner.setVisibility(View.GONE);
+//        treeLevelsSpinner = findViewById(R.id.tree_levels);
+//
+//        graphSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                if (position == 0) {
+//                    treeLevelsSpinner.setVisibility(View.VISIBLE);
+//                    cubeLevelsSpinner.setVisibility(View.GONE);
+//                } else if (position == 1) {
+//                    treeLevelsSpinner.setVisibility(View.GONE);
+//                    cubeLevelsSpinner.setVisibility(View.VISIBLE);
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//
+//        graphView.setOnNodeClickListener(new OnNodeClickListener() {
+//            @Override
+//            public void onClick(GraphView view, Node node) {
+//                Toast.makeText(MainActivity.this, node.getLabel(), Toast.LENGTH_LONG).show();
+//            }
+//        });
 
-        graphSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    treeLevelsSpinner.setVisibility(View.VISIBLE);
-                    cubeLevelsSpinner.setVisibility(View.GONE);
-                } else if (position == 1) {
-                    treeLevelsSpinner.setVisibility(View.GONE);
-                    cubeLevelsSpinner.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        graphView.setOnNodeClickListener(new OnNodeClickListener() {
-            @Override
-            public void onClick(GraphView view, Node node) {
-                Toast.makeText(MainActivity.this, node.getLabel(), Toast.LENGTH_LONG).show();
-            }
-        });
+        graphView.setGraph(new KReqular(15,4));
 
     }
 
