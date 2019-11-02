@@ -1,7 +1,5 @@
 package ir.shahinsoft.graphdraw.graph;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 import ir.shahinsoft.graphdraw.model.Edge;
