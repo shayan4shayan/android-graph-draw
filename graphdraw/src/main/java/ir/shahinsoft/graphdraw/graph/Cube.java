@@ -23,6 +23,10 @@ public class Cube extends Graph {
      */
     private int level;
 
+    private boolean colory = false;
+
+    int[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.GRAY};
+
     public void setLevel(int level) {
         this.level = level;
     }
@@ -35,6 +39,18 @@ public class Cube extends Graph {
         this.level = min(level, MAX_LEVEL);
 
         initCube();
+    }
+
+    public void setColory(boolean hasColor) {
+        this.colory = hasColor;
+    }
+
+    public boolean isColory() {
+        return colory;
+    }
+
+    public void setColors(int[] colors) {
+        this.colors = colors;
     }
 
     @Override
@@ -106,7 +122,11 @@ public class Cube extends Graph {
             initGraph(startIndex + size / 2, size / 2, level - 1);
             //connecting left side to right side
             for (int i = startIndex; i < startIndex + (size / 2); i++) {
-                addEdge(Edge.createEdgeWithColor(i, i + size / 2,getColorForLevel(level)));
+                int color = Color.BLACK;
+                if (isColory()) {
+                    color = getColorForLevel(level);
+                }
+                addEdge(Edge.createEdgeWithColor(i, i + size / 2, color));
             }
         } else {
 
@@ -125,16 +145,7 @@ public class Cube extends Graph {
     }
 
     private int getColorForLevel(int level) {
-        switch (level) {
-            case 1:
-                return Color.RED;
-            case 2:
-                return Color.BLUE;
-            case 3:
-                return Color.GREEN;
-            default:
-                return Color.BLACK;
-        }
+        return colors[level];
     }
 }
 
