@@ -81,6 +81,7 @@ public class Graph {
     public Edge addEdge(int startId, int endId) {
         Edge edge = new Edge(startId, endId);
         edges.add(edge);
+        updateDegree(edge,true);
         return edge;
     }
 
