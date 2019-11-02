@@ -45,7 +45,6 @@ public class GraphView extends View {
         public boolean onTouch(View v, MotionEvent event) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    Log.d("GraphView", "actionDown");
                     clickX = event.getX();
                     clickY = event.getY();
                     break;
@@ -65,10 +64,8 @@ public class GraphView extends View {
         float touchX = event.getX();
         float touchY = event.getY();
 
-        Log.d("GraphView", String.format("lx: %f, ly: %f, x: %f, y: %f", clickX, clickY, touchX, touchX));
 
         if (abs(touchX - clickX) < CLICK_ACTION_THRESHOLD && abs(touchY - clickY) < CLICK_ACTION_THRESHOLD) {
-            Log.d("GraphView", " clicked");
             onClick(clickX, clickY);
             return true;
         }
@@ -78,7 +75,6 @@ public class GraphView extends View {
     private void onClick(float x, float y) {
         for (Node node : graph.getNodes()) {
             if (checkNodeClicked(node, x, y)) {
-                Log.d("GraphView", "found");
                 performNodeClicked(node);
                 return;
             }
@@ -98,7 +94,6 @@ public class GraphView extends View {
     private boolean checkNodeClicked(Node node, float x, float y) {
         float posx = getPosXForNode(node.getRelativePositionX());
         float posy = getPosYForNode(node.getRelativePositionY());
-        Log.d("GraphView", String.format("x: %f, y:%f, px: %f, py:%f", x, y, posx, posy));
         return abs(posx - x) < clickRadius && abs(posy - y) < clickRadius;
     }
 
@@ -191,9 +186,7 @@ public class GraphView extends View {
 
         float posx = getPosXForNode(node.getRelativePositionX());
         float posy = getPosYForNode(node.getRelativePositionY());
-
-        Log.d("GraphDraw", "posX : " + posx + ", posY : " + posy);
-
+        
         if (node.hasFocus()) {
             paint.setColor(selectedNodeColor);
             canvas.drawCircle(posx, posy, radius, paint);

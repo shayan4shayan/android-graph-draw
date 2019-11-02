@@ -31,7 +31,6 @@ public class BinaryTree extends Graph {
     @Override
     public void setView(final View view) {
         super.setView(view);
-        Log.d("binaryTree", "width: " + width);
 
         view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
@@ -59,13 +58,11 @@ public class BinaryTree extends Graph {
             }
             int level = getLevel(i);
 
-            Log.d("binaryTree", "index: " + i + ", level: " + level);
 
             int nodesInRow = (int) Math.pow(2, level);
             /*           position in list    the number of nodes in tree before our level   */
             int positionInRow = i - (nodesInRow - 1);
 
-            Log.d("BinaryTree", "nodesInRow: " + nodesInRow + ", positionInRow: " + positionInRow);
 
             float posX = getPosX(nodesInRow, positionInRow);
 
@@ -73,7 +70,6 @@ public class BinaryTree extends Graph {
 
             Node node = nodes.get(i);
 
-            Log.d("BinaryTree", "posX: " + posX + ", posY: " + posY);
 
             node.setRelativePositionY((posY / height) * 100);
             node.setRelativePositionX((posX / width) * 100);

@@ -111,7 +111,6 @@ public class Cube extends Graph {
         } else {
 
             //creating a simple level 1 cube.
-            Log.d("CUBE", "startIndex " + startIndex);
             Node node1 = new Node(startIndex);
             Node node2 = new Node(startIndex + 1);
             Edge edge = new Edge(startIndex, startIndex + 1);

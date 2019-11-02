@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
 //            }
 //        });
 
-        graphView.setGraph(new KReqular(15,4));
+        graphView.setGraph(new KReqular(21,4));
 
     }
 

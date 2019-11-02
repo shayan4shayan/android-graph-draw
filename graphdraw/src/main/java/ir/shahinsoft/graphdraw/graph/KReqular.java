@@ -1,5 +1,7 @@
 package ir.shahinsoft.graphdraw.graph;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import ir.shahinsoft.graphdraw.model.Edge;
@@ -10,8 +12,8 @@ public class KReqular extends Graph {
 
     private final int vertexCount;
     private final int k;
-    private final int startRadius=10;
-    private final float vertexGap=5;
+    private final int startRadius = 10;
+    private final float vertexGap = 10;
 
     public KReqular(int vertexCount, int k) {
 
@@ -32,25 +34,26 @@ public class KReqular extends Graph {
     }
 
     private void initVertexPositions() {
-        startPositioning(getNodes(),0, next(0), 50f, 50f);
+        startPositioning(getNodes(), 0, next(0), 50f, 50f);
     }
 
-    private void startPositioning(ArrayList<Node> vertexes,int startIndex, float raduis, float cx, float cy) {
+    private void startPositioning(ArrayList<Node> vertexes, int startIndex, float raduis, float cx, float cy) {
         int max = maxfor(raduis);
-        if (vertexes.size() > max){
-            position(vertexes,startIndex,max,raduis,cx,cy);
-            startPositioning(vertexes,startIndex+max,next(raduis),cx,cy);
+        if (vertexes.size() - startIndex > max) {
+            position(vertexes, startIndex, max, raduis, cx, cy);
+            startPositioning(vertexes, startIndex + max, next(raduis), cx, cy);
         } else {
-            position(vertexes,startIndex,vertexes.size()-startIndex,raduis,cx,cy);
+            position(vertexes, startIndex, vertexes.size() - startIndex, raduis, cx, cy);
         }
     }
 
     private void position(ArrayList<Node> vertexes, int startIndex, int size, float raduis, float cx, float cy) {
-        double degree = 2 * Math.PI/size;
-        for (int i=startIndex;i<size;i++){
-            vertexes.get(i).setRelativePositionX(getPositionX(raduis,degree,cx));
-            vertexes.get(i).setRelativePositionY(getPositionY(raduis,degree,cy));
-            degree += degree;
+        double degree = 2 * Math.PI / size;
+        double drawDegree = degree;
+        for (int i = startIndex; i < startIndex + size; i++) {
+            vertexes.get(i).setRelativePositionX(getPositionX(raduis, drawDegree, cx));
+            vertexes.get(i).setRelativePositionY(getPositionY(raduis, drawDegree, cy));
+            drawDegree += degree;
         }
     }
 
@@ -67,7 +70,7 @@ public class KReqular extends Graph {
     }
 
     private float next(float radius) {
-        if (radius==0) return startRadius;
+        if (radius == 0) return startRadius;
         return radius * 2f;
     }
 
@@ -76,12 +79,16 @@ public class KReqular extends Graph {
 
         //creating edges
         ArrayList<Node> nodes = getNodes();
+        int targetIndex = 1;
         for (int i = 0; i < nodes.size(); i++) {
             Node node = nodes.get(i);
-            int pvote = 1;
-            while (node.getDegree() < k) {
-                addEdge(Edge.createEdge(i, i + pvote));
-                pvote++;
+            while (node.getDegree() != k) {
+                if (targetIndex == nodes.size()) {
+                    targetIndex = i + 1;
+                }
+                Node node1 = nodes.get(targetIndex);
+                addEdge(node, node1);
+                targetIndex++;
             }
         }
     }
